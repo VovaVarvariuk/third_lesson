@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Users from "./components/users";
 import API from "./API";
 import SearchStatus from "./components/searchStatus";
+import Pagination from "./components/pagination";
 
 const App = () => {
   let [users, setUsers] = useState(API.users.fetchAll());
@@ -15,10 +16,8 @@ const App = () => {
   const handleToggleBookmark = (id) => {
     setUsers(
       users.map((user) => {
-        if (user._id === id && user.bookmark === true) {
-          user.bookmark = false;
-        } else if (user._id === id) {
-          user.bookmark = true;
+        if (user._id === id) {
+          user.bookmark = !user.bookmark;
         }
         return user;
       })
