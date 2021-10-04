@@ -7,17 +7,17 @@ const App = () => {
     useEffect(() => {
         API.users.fetchAll().then((data) => setUsers(data));
     }, []);
-    const allUsers = users ? setUsers() : "";
+
     const handleDelete = (userId) => {
         setUsers(
-            allUsers.filter((item) => {
+            users.filter((item) => {
                 return item._id !== userId;
             })
         );
     };
     const handleToggleBookmark = (id) => {
         setUsers(
-            allUsers.map((user) => {
+            users.map((user) => {
                 if (user._id === id) {
                     user.bookmark = !user.bookmark;
                 }
@@ -28,11 +28,13 @@ const App = () => {
 
     return (
         <>
-            <Users
-                users={users}
-                handleDelete={handleDelete}
-                handleToggleBookmark={handleToggleBookmark}
-            />
+            {users && (
+                <Users
+                    users={users}
+                    handleDelete={handleDelete}
+                    handleToggleBookmark={handleToggleBookmark}
+                />
+            )}
         </>
     );
 };

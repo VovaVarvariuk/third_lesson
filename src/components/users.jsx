@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import GroupList from "./groupList";
 import api from "../API/index";
 import SearchStatus from "./searchStatus";
+import _ from "lodash";
 
 const Users = ({ users: allUsers, handleDelete, handleToggleBookmark }) => {
     const [professions, setProfession] = useState();
@@ -26,7 +27,7 @@ const Users = ({ users: allUsers, handleDelete, handleToggleBookmark }) => {
         setCurrentPage(1);
     }, [selectedProf]);
     const filteredUsers = selectedProf
-        ? allUsers.filter((user) => user.profession === selectedProf)
+        ? allUsers.filter((user) => _.isEqual(user.profession, selectedProf))
         : allUsers;
     const count = filteredUsers.length;
     const users = paginate(filteredUsers, currentPage, pageSize);
