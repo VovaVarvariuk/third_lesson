@@ -2,12 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const GroupList = ({ items, valueProperty, contentProperty, onItemSelect, selectedItem }) => {
-    console.log(items);
     if (Array.isArray(items)) {
         return (
             <ul className="list-group">
                 {items.map((item) => {
-                    console.log(item[contentProperty]);
                     return (
                         <li
                             key={item[valueProperty]}
