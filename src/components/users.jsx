@@ -13,6 +13,10 @@ const Users = () => {
     useEffect(() => {
         api.users.fetchAll().then((data) => setUsers(data));
     }, []);
+    // const [userId, setUserId] = useState();
+    // useEffect(() => {
+    //     api.users.getById().then((data) => setUserId(data));
+    // }, []);
 
     const handleDelete = (userId) => {
         setUsers(
